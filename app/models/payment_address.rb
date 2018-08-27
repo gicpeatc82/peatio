@@ -31,7 +31,7 @@ class PaymentAddress < ActiveRecord::Base
 end
 
 # == Schema Information
-# Schema version: 20180529125011
+# Schema version: 20180813105100
 #
 # Table name: payment_addresses
 #
@@ -46,7 +46,5 @@ end
 #
 # Indexes
 #
-#  index_payment_addresses_on_account_id               (account_id) UNIQUE
-#  index_payment_addresses_on_currency_id              (currency_id)
 #  index_payment_addresses_on_currency_id_and_address  (currency_id,address) UNIQUE
 #

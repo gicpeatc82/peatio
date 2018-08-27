@@ -136,6 +136,8 @@ end
 #  bid_unit      :string(10)       not null
 #  ask_fee       :decimal(17, 16)  default(0.0), not null
 #  bid_fee       :decimal(17, 16)  default(0.0), not null
+#  max_bid       :decimal(17, 16)
+#  min_ask       :decimal(17, 16)  default(0.0), not null
 #  ask_precision :integer          default(8), not null
 #  bid_precision :integer          default(8), not null
 #  position      :integer          default(0), not null
