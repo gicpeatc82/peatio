@@ -9,6 +9,9 @@
     <a class="dropdown-item" href="<%= settings_path %>">
       <i class="fa fa-user"></i><span><%= t('header.my_profile') %></span>
     </a>
+    <a class="dropdown-item" href="<%= tickets_path %>">
+      <i class="fa fa-comments"></i><span><%= t('header.tickets') %></span>
+    </a>
     <% if is_admin? %>
       <a class="dropdown-item" href="<%= admin_dashboard_path %>">
         <i class="fa fa-dashboard"></i>
