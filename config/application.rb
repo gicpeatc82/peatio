@@ -40,7 +40,7 @@ module Peatio
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[root.join('config', 'locales', '*.{yml}')]
-    config.i18n.available_locales = ['en']
+    config.i18n.available_locales = ['en', 'zh-CN']
 
     # Observer configuration
     config.active_record.observers = :transfer_observer

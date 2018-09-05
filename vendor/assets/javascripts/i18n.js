@@ -427,6 +427,8 @@
 
     if (scope instanceof Object) {
       translations = scope;
+      console.log(" I18n");
+
     } else {
       translations = this.lookup(scope, options);
     }

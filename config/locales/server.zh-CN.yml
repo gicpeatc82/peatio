@@ -1,0 +1,764 @@
+zh-CN:
+  activerecord:
+    models:
+      trade: 交易
+      order: 订单
+      order_bid: 出价
+      order_ask: 请求
+      withdraw: 提款
+      deposit: 充值
+      statistic/orders_grid: 订单统计
+      statistic/trades_grid: 交易统计
+      statistic/members_grid: 成员统计
+      statistic/deposits_grid: 充值统计
+      statistic/withdraws_grid: 提款统计
+      admin/deposits_grid: 充值
+      admin/withdraws_grid: 提款
+      deposits/fiat: 充值银行
+      withdraws/coin: 提款银行
+    attributes:
+      account:
+        currency: 货币
+        balance_and_locked: 平衡/锁定
+        balance: 结余
+        locked: 锁定
+      deposit:
+        state: 状态
+        tx_id: TxID
+        member_id: 会员ID
+        created_at: 提交于
+        address: 地址
+        amount: 金额
+        completed_at: 完成于
+      withdraw:
+        id: ID
+        created_at: 创建于
+        completed_at: 完成
+        sum: 总和
+        fee: 费用
+        currency: 货币
+        amount: 金额
+        address: 地址
+        state: 状态
+        state_text: 状态
+        tx_id: TxID
+        detail: 细节
+      trade:
+        bid: 出价
+        ask: 请求
+        fee: 费用
+        price: 履约价
+        volume: Strike Volume
+        category: 买/卖
+        order: 订单
+      order:
+        bid: 出价
+        ask: 请求
+        price: 费用
+        total: 总计
+        volume: 量
+        origin_volume: 量
+        sum: 总和
+        category: 买/卖
+        kind: 类
+        at: 于
+        id: ID
+        state: 状态
+        operation: 操作
+      member:
+        id: ID
+        name: 真实姓名
+        created_at: 注册
+        sn: SN
+      withdraws/fiat:
+        id: ID
+        state_and_actions: 状态/动作
+        sum: 金额
+        fee: 费用
+        amount: 金额
+        created_at: 创建于
+      deposits/fiat:
+        created_at: 创建于
+        holder: 持有人
+        member_sn: 会员SN
+        amount: 金额
+        sn: SN
+        state_and_action: 状态/动作
+        label: 标签
+      deposits/coin:
+        created_at: 创建于
+        txid: 交易ID
+        amount: 金额
+        confirmations: 确认
+        aasm_state: 状态
+      withdraws/coin:
+        id: ID
+        state_and_actions: 状态/动作
+        created_at: 创建于
+        sum: 金额
+        amount: 金额
+        fee: 费用
+    errors:
+      models:
+        order_bid:
+          attributes:
+            sum:
+              expensive: 高价帐户
+            price:
+              range: 无效的价格范围
+        order_ask:
+          attributes:
+            origin_volume:
+              expensive: 高价帐户
+            price:
+              range: 无效的价格范围
+        account:
+          attributes:
+            balance:
+              less: 小于实际余额
+        withdraw:
+          account_balance_is_poor: 帐户余额不足
+          attributes:
+            password:
+              match: 无效
+            amount:
+              poor: 不足
+              bank_min: Less 5000.00
+        application:
+          attributes:
+            redirect_uri:
+              fragment_present: 不能包含片段。
+              invalid_uri: 必须是有效的URI。
+              relative_uri: 必须是绝对URI。
+      messages:
+        undef: 不明原因
+        less: balance less
+        verify: 验证错误
+        orders:
+          price: 限价 %{l} ~ %{h}
+          sum: 限价金额 %{l} ~ %{h}
+          precision: 最低精度 %{p}
+  datagrid:
+    empty: 没有找到数据
+    filters:
+      date:
+        range_separator: " to "
+      datetime:
+        range_separator: " to "
+    form:
+      submit: 搜索
+    admin_deposits_grid:
+      columns:
+        sn: SN
+        created_at: 于
+        txid: TXID
+        amount: 金额
+        fee: 费用
+        aasm_state: 状态
+    bank_deposits_grid:
+      columns:
+        sn: SN
+        created_at: 于
+        amount: 金额
+        fee: 费用
+        aasm_state: 状态
+    coin_deposits_grid:
+      columns:
+        sn: SN
+        txid: 交易 ID
+        created_at: 于
+        amount: 金额
+        aasm_state: 状态
+        confirmations: 确认
+    withdraws_grid:
+      columns:
+        name: 名称
+        amount: 金额
+        fee: 费用
+        created_at: 创建于
+        completed_at: 完成于
+        state_text: 状态
+    members_grid:
+      columns:
+        sn: 序列号
+        created_at: 创建于
+        actions: 行动
+  deposits/fiat:
+    aasm_state:
+      canceled: 已取消
+      submitted: 已提交
+      accepted: 已接受
+      rejected: 已拒绝
+  private:
+    deposits:
+      fiats:
+        destroy:
+          notice: 撤销请求成功。
+        create:
+          notice: 充值请求已成功提交。 使用以下信息完成银行转帐。
+          submit: 提交
+        new:
+          submit: 提交
+        edit:
+          bank: 接收银行名称
+          branch: 接收银行分行
+          hodler: 接收持有人
+          account: 接收帐户
+    history:
+      transaction:
+        Deposit: 充值
+        Withdraw: 提款
+      account:
+        currency: 货币
+        buy: 买
+        sell: 卖
+        filter_by_type: 按类型过滤
+        account_history: 帐户历史记录
+        type: 类型
+        timestamp: 日期和时间
+        fee: 费用
+        currency: 货币
+        amount: 金额
+        txid: Txid
+      orders:
+        order_history: 订单历史
+        id: ID
+        type: 类型
+        state: 状态
+        market: 市场
+        price: 价钱
+        volume: 量
+        average_price: 平均价钱
+        fulfilled_volume: 达到
+        timestamp: 创建于
+      order:
+        ask: 卖
+        bid: 买
+        wait: 展开
+        cancel: 已取消
+        done: 完成
+      trades:
+        trade_history: 订单历史
+        side: 侧面
+        created_at: 时间
+        display_currency: 基础货币
+        base_amount: 基本金额
+        quote_currency: 报价货币
+        quote_amount: 报价金额
+        price: 价钱
+      trade:
+        sell: 卖
+        buy: 买
+    trade:
+      trades:
+        orders:
+          title: 订单
+        trades:
+          title: 交易
+        charges:
+          title: 费用
+      orders:
+        index:
+          done: 完成
+          cancel: 取消
+          confirm: '您确定要取消订单#%{id}吗?'
+        destroy:
+          'true': "#%{id} 取消订单成功"
+          'false': "#%{id} 取消订单拒绝"
+    withdraws:
+      update:
+        request_accepted: 提款请求已被接受。
+      destroy:
+        request_canceled: 提款请求已取消。
+      index:
+        fee: 费用
+        total: 总计
+        withdraw_history: 提款历史
+      fiats:
+        update:
+          notice: 银行转账提款申请已经提交，我们会尽快处理它。
+        destroy:
+          notice: 银行转账取款已被取消，冻结金额已经取消退回到您的帐户。
+        new:
+          submit: 提交
+          allin: All-In
+        create:
+          notice: 提款请求已成功提交。 使用以下信息完成银行转帐。
+      coins:
+        destroy:
+          notice: 提款已取消，冻结余额已返回到您的帐户。
+        update:
+          notice: 提款请求提交成功，我们会尽快处理。
+        new:
+          submit: 提交
+          allin: All-In
+        create:
+          notice: 提款请求已成功提交。 使用以下信息完成银行转帐。
+    assets:
+      index:
+        liability-proof: 责任证明
+        coin-assets: '%{currency} 资产'
+        fiat-assets: '%{currency} 资产'
+      liability_tabs:
+        verify-coin: '验证我的 %{currency} 资产'
+        verify-fiat: '验证我的 %{currency} 资产'
+        coin-assets-total: '兑换的所有 %{currency} 资产总额: '
+        fiat-assets-total: '兑换的所有 %{currency} 资产总额: '
+      liability_proof:
+        title: 责任证明
+        intro: 作为交易，我们的负债是指用户信任我们的货币（加密货币和法定货币）的总和。在此页面上，我们向您介绍我们的责任。 我们还为您提供了一种方法来验证您的帐户余额确实是我们的责任的一部分。
+      liability_data:
+        liability_proof_generation: 责任生成证明正在进行中，请在30分钟后回来。
+        root-json: 根节点
+        partial-tree: '我的 %{currency} 资产: '
+        get-partial-tree: Get my partial tree data
+        timestamp: 证明数据生成于 %{time}.
+        go-verify: 校验
+      coin_assets:
+        title: '%{currency} 资产'
+        intro: "此处列出了所有交易所的 %{currency} 资产."
+        total: ' %{currency} 总资产'
+        address: 地址
+      fiat_assets:
+        title: '%{currency} 资产'
+        intro: "此处列出了所有交易所的 %{currency} 资产."
+        total: '%{currency} 总资产'
+      partial_tree:
+        success: '成功！ 生成的验证数据: %{timestamp}'
+      liability_proof_generation: 责任生成证明正在进行中。
+    markets:
+      show:
+        error: 失败
+        success: 成功
+        analysis_panel: 分析
+        help_panel: 帮助
+        done: 完成
+        cancel: 取消
+        cancel_confirm: 确定取消订单吗？
+        confirm: 确认
+        ask_order: '请求 ##sn#'
+        bid_order: '出价 ##sn#'
+        my_active_order: 活跃
+        my_done_order: 完成
+        trades: 交易
+        chat: 聊天频道
+      bid_entry:
+        action: "买 %{currency}"
+      ask_entry:
+        action: "卖 %{currency}"
+      place_order:
+        price_high: 高
+        price_low: 低
+        full_bid: 满
+        full_ask: 空
+      order_book:
+        latest_trade: 最新交易
+      trade_state:
+        new: 新
+        partial: 局部
+      settings:
+        sound: 声音
+        notification: 通知
+    settings:
+      success: 设置已成功更新。
+      failure: 密码无效。 请再试一次。
+      index:
+        reauthenticate: 认证
+        auth-verified: 请先确认您的身份。
+        deposits_must_be_permitted: 请通过相应的验证步骤存入资金。
+        withdraws_must_be_permitted: 请通过相应的验证步骤取款。
+        trading_must_be_permitted: 请通过相应的验证步骤以启用交易。
+  guides:
+    private:
+      settings:
+        panel: 设置
+        index:
+          intro: 管理和修改您的个人资料。
+    panels:
+      balance: 帐户
+    sessions:
+      panel: 登录
+      new:
+        title: 登录我的帐户
+        intro: 登入gic進行交易
+      failure:
+        title: 登录我的帐户
+        intro: 登入gic進行交易
+    hints:
+      deposit:
+        bank:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+          sn: "<span class='text-danger'>Please copy the SN in your bank transfer's
+            message, otherwise we can not process your order quickly.</span>"
+      withdraw:
+        fiat:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        coin:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+    creating: 创建中...
+    updating: 更新中...
+    buttons:
+      or: 或者
+      cancel: 取消
+    'yes': '是'
+    'no': '否'
+    required:
+      text: 需要
+      mark: "*"
+    error_notification:
+      default_message: '请查看以下问题:'
+    labels:
+      defaults:
+        title: 标题
+      withdraw:
+        fiat:
+          sum: 金额
+          account_balance: 账户余额
+        coin:
+          fee: 费用
+          sum: 金额
+          account_balance: 账户余额
+  admin:
+    deposits:
+      fiats:
+        show:
+          alert: 无法充值。
+          notice: 充值成功了
+          deposit: 存款申请
+          accept: 接受
+          target_deposit: 电汇
+          confirm: 确认充值？
+      coins:
+        update:
+          notice: 存款成功。
+        index:
+          accept: 接受
+          accept_confirm: 確認存款？
+    members:
+      index:
+        search: 搜索
+        members: 会员
+        email: Email
+        name: 名称
+        wallet_address: 錢包地址
+      show:
+        member_title: 用戶信息
+        actions_title: 行动
+        accounts_title: 帐户信息
+    dashboard:
+      index:
+        accounts_title: 帐戶摘要
+    statistic:
+      filter: 过滤
+      summary: 概要
+      click-to-expand: 扩大
+      members:
+        show:
+          table: 结果
+      orders:
+        show:
+          avg: 平均
+          sum: 订单量
+          sum_strike: 按照数量
+          count: 数
+      trades:
+        show:
+          count: 交易
+          volume: 量
+          amount: 总金额
+          min_price: 最低价格
+          max_price: 最高价格
+          avg_price: 平均价格
+          amount_fee: 交易费用
+          volume_fee: 总费用
+      deposits:
+        show:
+          count: 总计
+          amount: 总金额
+      withdraws:
+        show:
+          count: 总计
+          amount: 总金额
+          fee: 费用
+    withdraws:
+      fiats:
+        index:
+          empty: 没有数据
+        show:
+          process: 过程
+          succeed: 成功
+          reject: 拒绝
+          succeed_confirm: 确认流程？
+          reject_confirm: 确认拒绝？
+          withdraw: 提款
+          empty: 没有数据
+      coins:
+        show:
+          process: 已接受
+          succeed: 提款
+          reject: 拒绝
+          succeed_confirm: 取款流程？
+          reject_confirm: 拒绝取款？
+          withdraw: 取款
+        update:
+          notice: 成功更新。
+        destroy:
+          notice: 成功销毁。
+
+  deposits/coin:
+    aasm_state:
+      submitted: 已提交
+      accepted: 已接受
+      checked: 已查验
+      warning: 警告
+  easy_table:
+    coin:
+      amount: 金额
+      txid: TxId
+      created_at: 创建于
+      confirmations: 确认
+      state_and_actions: 状态/动作
+    fiat:
+      sn: SN
+      amount: 金额
+      created_at: 于
+      memo: 备忘录
+      state_and_actions: 状态/动作
+  enumerize:
+    state:
+      done: 完成
+      wait: 等待
+      cancel: 取消
+    order:
+      state:
+        done: 完成
+        wait: 等待
+        cancel: 取消
+    deposit:
+      aasm_state:
+        submitted: 已提交
+        accepted: 已接受
+        canceled: 已取消
+        rejected: 已拒绝
+    withdraw:
+      state:
+        submitted: 已提交
+        prepared: 准备完成
+        rejected: 已拒绝
+        accepted: 已接受
+        suspected: 不信任的
+        processing: 处理中
+        done: 完成
+        canceled: 已取消
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: Last &raquo;
+      previous: "&lsaquo; Prev"
+      next: Next &rsaquo;
+      truncate: "..."
+
+  'true': true
+  'false': false
+  view_on_github: 於 Github 查看
+  slogan:
+    heading: gic Exchange
+    subheading: 副标题
+    text1: 用于管理数字货币的加密货币交易。
+    text2: text2
+  trade:
+    markets: 市场
+    realtime_price:
+      title: 即时价钱
+
+    account_balance:
+      title: 结余
+  gon:
+    ask: 请求
+    bid: 出价
+    notification:
+      title: gic2
+      enabled: 启用通知。
+      new_trade: "%{kind} order#%{id} executed at %{price} %{quote_unit} for %{volume} %{base_unit}。"
+  back: 返回
+  invalid_password: 无效的密码
+  all: 所有
+  date:
+    formats:
+      date-short: "%m-%d"
+      short: "%m-%d %H:%M"
+      default: "%m/%d/%Y %H:%M"
+  time:
+    formats:
+      date-short: "%m-%d"
+      short: "%m-%d %H:%M"
+      default: "%m/%d/%Y %H:%M"
+  header:
+    home: 首頁
+    dashboard: 概览
+    admin: 管理员面板
+    market: 交易
+    settings: 个人资料
+    signout: 退出
+    funds: 资产
+    getstart: 市场
+    assets: 偿付能力
+    history: 历史纪录
+    order_history: 订单历史
+    trade_history: 订单历史
+    account_history: 帐户历史记录
+    my_profile: 我的简历
+    account_balance: 总资产
+    back: 返回
+    total: 总计
+    deposit: 充值
+    withdraw: 提款
+  admin_header:
+    deposits: 充值
+    withdraws: 提款
+  footer:
+    about: 关于
+    privacy: 隐私
+    contact: 联系我们
+    price: 价钱
+    liability_proof: 责任证明
+  actions:
+    go: Go
+    submit: 提交
+    deposit: 充值
+    select: 请选择
+    unlock: 解锁
+    confirm: 确认
+    back: 返回
+    block: view in block
+    destroy: 删除
+    destroy_confirm: 你确定要删除这个吗？
+    detail: 内容
+    publish: 发布
+    edit: 编辑
+    preview: 预览
+    close: 关闭
+    cancel: 取消
+    view: 视图
+    member: 会员
+    transact: 办理
+    process: 过程
+    reject: 拒绝
+    clipboard:
+      click: 点击复制
+      done: 复制
+  chart:
+    open: Open
+    high: 高
+    low: 低
+    close: 关闭
+    price: 价钱
+    volume: 量
+    candlestick: '烛柱图'
+    line: '线'
+    minute: 分钟
+    hour: 小时
+    day: 天
+    week: 周
+    month: 月
+    year: 年
+    zoom: 放大
+    ask: 请求
+    bid: 出价
+    depth: 深度
+    depth_title: 市场深度
+  'yes': '是否'
+  'no': '否'
+  helpers:
+    action:
+      view: 视图
+      customer_service: 联系我们
+    submit:
+      order_ask:
+        create: 请求
+      order_bid:
+        create: 出价
+      member:
+        update: 开帐户
+      deposit:
+        create: 充值
+      withdraw:
+        create: 提交
+  activations:
+    new:
+      login_required: 请登录。
+  layouts:
+    admin:
+      menus:
+        sections:
+          members: 会员
+          deposits: 充值
+          sites_statistics: 分析
+          operating: 操作
+        items:
+          operating:
+            proofs: 证明
+            deposits: 充值
+            withdraws: 提款
+          deposits:
+            currency: 充值
+    application:
+      close: 关闭
+  members:
+    edit:
+      name: 请填写申请表。
+  sessions:
+    new:
+    create:
+      disabled: 您的帐户已被停用，如果您有任何问题，请与管理员联系。
+    failure:
+      account_locked: 登录尝试失败次数过多。 为确保您帐户的安全，我们已锁定您的帐户。 解锁请单击“忘记密码”重置密码。
+      error: 错误的客户ID或密码，请重试。
+  shared:
+    admin:
+      member:
+        member_info: 会员信息
+        inactive: 非活动帐户
+        deactive: 关闭帐户
+      account:
+        account_info: 帐户信息
+        payment_address: 存款地址
+    header:
+      balance: 结余
+    header_account_balance:
+      locked: 锁定
+    market:
+      ticker:
+        ask_price: 请求
+        bid_price: 出价
+        high_price: 高
+        low_price: 低
+        volume: 量
+        latest_price: 上个
+    frame:
+      deposit_now: 立即存款
+  withdraws:
+    invalid_address: 无效地址。
+  withdraws/fiat:
+    aasm_state:
+      submitted: 已提交
+      prepared: 准备完成
+      rejected: 已拒绝
+      accepted: 已接受
+      suspected: 不信任的
+      processing: 处理中
+      done: 完成
+      canceled: 取消
+
+      failed: 失败
+  withdraws/coin:
+    aasm_state:
+      submitted: 已提交
+      prepared: 准备完成
+      rejected: 已拒绝
+      accepted: 已接受
+      suspected: 不信任的
+      processing: 处理中
+      done: 完成
+      canceled: 已取消
+      failed: 失败
