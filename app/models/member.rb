@@ -10,6 +10,8 @@ class Member < ActiveRecord::Base
   has_many :withdraws, -> { order(id: :desc) }
   has_many :deposits, -> { order(id: :desc) }
   has_many :authentications, dependent: :delete_all
+  has_many :tickets, foreign_key: 'author_id'
+  has_many :comments, foreign_key: 'author_id'
 
   scope :enabled, -> { where(disabled: false) }
 
