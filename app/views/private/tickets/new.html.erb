@@ -1,12 +1,14 @@
-<%= form_for @ticket do |f|%>
+<%= form_for @ticket do |f| %>
   <div class="form-group">
     <%= f.label :title, "Title" %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
 
     <%= f.label :content, "Content" %>
-    <%= f.text_field :content %>
+    <%= f.text_area :content, class: "form-control" %>
 
-    <%= f.button :wrapped, cancel: tickets_path %>
+    <%= f.submit class: "btn btn-primary"%>
+    <%= f.button "Cancal", type: :reset, class: "btn btn-default" %>
+
   </div>
 
 <% end %>
