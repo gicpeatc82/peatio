@@ -17,8 +17,8 @@ module Private
 
       if @ticket.save
         flash[:notice] = I18n.t('private.tickets.ticket_create_succ')
-        redirect_to tickets_path
-        ContactMailer.send_mail.deliver_now
+        redirect_to :new
+        ContactMailer.send_mail(@ticket.id).deliver_now
       else
         flash[:alert] = I18n.t('private.tickets.ticket_create_fail')
         render :new

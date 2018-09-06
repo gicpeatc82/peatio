@@ -1,6 +1,6 @@
 class ContactMailer < ApplicationMailer
-  def send_mail
-
-    mail to: "tauryuan@seed.net.tw", subject: "gic mail test!"
+  def send_mail(ticket_id)
+    @ticket = Ticket.find(ticket_id)
+    mail to: "gicpeatc82@gmail.com", subject: @ticket.title
   end
 end

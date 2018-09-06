@@ -1,5 +1,6 @@
 class Ticket < ActiveRecord::Base
   validates_presence_of :title
+  validates_presence_of :content
   
   belongs_to :author, class_name: 'Member', foreign_key: 'author_id'
 

@@ -190,6 +190,9 @@ zh-CN:
       accepted: 已接受
       rejected: 已拒绝
   private:
+    tickets:
+      ticket_create_succ: 服务单创建成功。
+      ticket_create_fail: 服务单创建失败, 请稍候再试。
     deposits:
       fiats:
         destroy:
