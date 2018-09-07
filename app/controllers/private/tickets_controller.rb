@@ -8,6 +8,8 @@ module Private
 
     def new
       @ticket = Ticket.new
+      @guide_panel_title = I18n.t('private.tickets.panel')
+      @guide_title = I18n.t('private.tickets.panel')
     end
 
     def create
