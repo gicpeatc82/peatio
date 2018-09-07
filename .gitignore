@@ -30,6 +30,8 @@ tmp
 /config/management_api_v1.yml
 /config/seed/*
 /config/database.yml
+/config/environments/develoment.rb
+/config/environments/production.rb
 
 # Ignore translations.js
 /public/javascripts/translations.js

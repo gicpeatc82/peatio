@@ -47,5 +47,5 @@ Rails.application.configure do
     user_name: 'www.efpg@gmail.com',
     password: 'nnkuofpuacwrttha',
     enable_starttls_auto: true
-  }
+  }==
 end
