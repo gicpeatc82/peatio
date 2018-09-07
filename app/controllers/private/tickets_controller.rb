@@ -14,10 +14,9 @@ module Private
       @ticket = current_user.tickets.create(ticket_params)
       @ticket.save
 
-
       if @ticket.save
         flash[:notice] = I18n.t('private.tickets.ticket_create_succ')
-        redirect_to :new
+        redirect_to tickets_path
         ContactMailer.send_mail(@ticket.id).deliver_now
       else
         flash[:alert] = I18n.t('private.tickets.ticket_create_fail')
