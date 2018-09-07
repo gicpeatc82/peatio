@@ -18,8 +18,8 @@
     <%= f.label :content, I18n.t('private.tickets.content') %>
     <%= f.text_area :content, class: "form-control", rows: 10 %>
   </div>
-  <%= f.submit class: "btn btn-primary"%>
-  <%= f.button "Cancal", type: :reset, class: "btn btn-default" %>
+  <%= f.submit I18n.t('private.tickets.submit'), class: "btn btn-primary"%>
+  <%= f.button I18n.t('private.tickets.cancel'), type: :reset, class: "btn btn-default" %>
 
   </div>
 
