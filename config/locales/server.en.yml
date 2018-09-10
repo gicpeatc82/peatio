@@ -609,6 +609,7 @@ en:
       short: "%m-%d %H:%M"
       default: "%m/%d/%Y %H:%M"
   header:
+    tickets: Tickets
     home: Home
     dashboard: Dashboard
     admin: Admin Panel

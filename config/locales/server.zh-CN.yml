@@ -603,6 +603,7 @@ zh-CN:
       short: "%m-%d %H:%M"
       default: "%m/%d/%Y %H:%M"
   header:
+    tickets: 服务单
     home: 首頁
     dashboard: 概览
     admin: 管理员面板
