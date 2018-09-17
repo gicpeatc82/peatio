@@ -27,6 +27,7 @@
       <div class="col-8 text-center">
         <% # Output button for enabled OAuth2 provider. %>
         <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
+        <%= provider%>111111
         <% unless provider.blank? %>
           <a class="btn btn-primary btn-lg btn-block" href="/auth/<%= provider == 'google' ? 'google_oauth2' : provider %>" role="button">
             <small><%= t("header.sign_in_with_#{provider}") %></small>
