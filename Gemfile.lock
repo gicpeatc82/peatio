@@ -160,6 +160,13 @@ GEM
       json
       multi_json
       request_store (>= 1.0.5)
+    google-authenticator-rails (2.0.0)
+      actionpack
+      activerecord
+      google-qr
+      rails
+      rotp (= 3.3.0)
+    google-qr (0.2.2)
     grape (1.0.3)
       activesupport
       builder
@@ -337,6 +344,7 @@ GEM
       redis (>= 2.2, < 5)
     request_store (1.4.1)
       rack (>= 1.4)
+    rotp (3.3.0)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -447,6 +455,7 @@ DEPENDENCIES
   font-awesome-sass (~> 4.7.0)
   god (~> 0.13.7)
   gon (~> 5.2.3)
+  google-authenticator-rails
   grape (~> 1.0.3)
   grape-entity (~> 0.7.1)
   grape-swagger (~> 0.28.0)
