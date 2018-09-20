@@ -1,0 +1,2 @@
+module Verify::GoogleAuthsHelper
+end
