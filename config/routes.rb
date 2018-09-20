@@ -90,11 +90,6 @@ Peatio::Application.routes.draw do
 
   get '/swagger', to: 'swagger#index'
 
-  namespace :verify do
-    resource :sms_auth,    only: [:show, :update]
-    resource :google_auth, only: [:show, :update, :edit, :destroy]
-  end
-
   mount APIv2::Mount => APIv2::Mount::PREFIX
   mount ManagementAPIv1::Mount => ManagementAPIv1::Mount::PREFIX
 end
