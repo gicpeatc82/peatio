@@ -23,7 +23,7 @@ Peatio::Application.routes.draw do
   root 'welcome#index'
 
   #Google's MFA authenticator
-  resource :member_mfa_session, only: %i(new create)
+  resource :member_mfa_session, :only =>[:new, :create]
 
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure', :as => :failure

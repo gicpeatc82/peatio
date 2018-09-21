@@ -2,9 +2,11 @@
   <%= flash[:error] %>
   <br />
 <% end %>
-<img src="<%= @member.google_qr_uri %>">
+
+<img src="<%= @member.google_qr_uri %>"/>
 <br />
-<%= form_tag user_mfa_session_path, method: :post do %>
+
+<%= form_tag member_mfa_session_path, method: :post do %>
   <div class="actions">
     <%= text_field :auth, :mfa_code %>
     <%= submit_tag 'authenticate' %>

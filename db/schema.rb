@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180921012827) do
+ActiveRecord::Schema.define(version: 20180921083652) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "member_id",   limit: 4,                                          null: false
@@ -127,6 +127,11 @@ ActiveRecord::Schema.define(version: 20180921012827) do
   add_index "markets", ["enabled"], name: "index_markets_on_enabled", using: :btree
   add_index "markets", ["position"], name: "index_markets_on_position", using: :btree
 
+  create_table "member_mfa_sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.integer  "level",         limit: 1,   default: 0,     null: false
     t.string   "sn",            limit: 12,                  null: false
@@ -137,6 +142,7 @@ ActiveRecord::Schema.define(version: 20180921012827) do
     t.datetime "updated_at",                                null: false
     t.string   "google_secret", limit: 255
     t.string   "salt",          limit: 255
+    t.string   "name",          limit: 255
   end
 
   add_index "members", ["disabled"], name: "index_members_on_disabled", using: :btree

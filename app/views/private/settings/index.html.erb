@@ -2,6 +2,7 @@
   <h3 class="profile-email">
     <i class="fa fa-user"></i><span><%= current_user.email %></span>
   </h3>
+  <%= link_to "new_member_mfa_session", new_member_mfa_session_path%>
 <% end %>
 
 <% content_for :guide do %>

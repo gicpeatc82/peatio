@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :is_admin?, :current_market, :gon
   before_action :set_language, :set_gon
   around_action :share_user
-  before_filter :check_mfa
+  #before_filter :check_mfa
 
 private
   def check_mfa
