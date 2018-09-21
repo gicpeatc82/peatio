@@ -10,8 +10,14 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :is_admin?, :current_market, :gon
   before_action :set_language, :set_gon
   around_action :share_user
+  before_filter :check_mfa
 
 private
+  def check_mfa
+     if !(member_mfa_session = MemberMfaSession.find) && (member_mfa_session ? member_mfa_session.record == current_user : !member_mfa_session)
+      redirect_to new_member_mfa_session_url
+    end
+  end
 
   def current_market
     unless params[:market].blank?
