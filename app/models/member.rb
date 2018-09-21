@@ -25,6 +25,11 @@ class Member < ActiveRecord::Base
 
   attr_readonly :email
 
+  acts_as_google_authenticated lookup_token: :salt, drift: 30, issuer: 'GIC2'
+  before_save {|record| record.salt = SecureRandom.hex unless record.salt }
+  after_create {|record| record.set_google_secret }
+
+
   class << self
     def from_auth(auth_hash)
       member = locate_auth(auth_hash) || locate_email(auth_hash) || Member.new
