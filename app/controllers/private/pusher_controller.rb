@@ -6,7 +6,7 @@ require "openssl"
 module Private
   class PusherController < BaseController
     protect_from_forgery :except => :auth
-  
+
     def auth
       sn = params[:channel_name].split('-', 2).last
       if current_user && current_user.sn == sn

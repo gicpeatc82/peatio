@@ -8,7 +8,8 @@ class MemberMfaSessionsController < ApplicationController
     @member = current_user
     if @member.google_authentic?(params[:auth][:mfa_code])
       MemberMfaSession.create(@member)
-      redirect_to root_path
+      @member.update(level: 2)
+      redirect_to settings_path
     else
       flash[:error] = "Wrong code"
       render :new

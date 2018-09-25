@@ -5,6 +5,7 @@ module Private
   class WithdrawsController < BaseController
     before_action :withdraws_must_be_permitted!
 
+
     def create
       @withdraw = withdraw_class.new(withdraw_params)
 
@@ -41,5 +42,6 @@ module Private
             .merge(currency_id: currency.id, member_id: current_user.id)
             .permit!
     end
+
   end
 end
