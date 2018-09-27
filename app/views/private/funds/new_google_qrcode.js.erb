@@ -1,0 +1,4 @@
+//document.getElementById("google_qrcode").innerHTML = "aaaaaa";
+var g_qrcode = document.createElement("div");
+g_qrcode.innerHTML = "<img src=<%= current_user.google_qr_uri %>>";
+$("#google-qrcode").append(g_qrcode);

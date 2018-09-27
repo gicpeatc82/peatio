@@ -3,8 +3,13 @@
 
 module Private
   class WithdrawsController < BaseController
+    #before_action :authenticate_level
     before_action :withdraws_must_be_permitted!
 
+    def new_google_qrcode
+      current_user.google_qr_uri
+      head 204
+    end
 
     def create
       @withdraw = withdraw_class.new(withdraw_params)

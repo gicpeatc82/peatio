@@ -6,6 +6,13 @@ require_dependency 'admin/base_controller'
 module Admin
   module Withdraws
     class BaseController < BaseController
+      
+      def authenticate_level
+        unless current_user.level > 1
+          flash[:alert] = "Need passed google verification !"
+          redirect_to new_member_mfa_session_path
+        end
+      end
 
     protected
 

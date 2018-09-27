@@ -37,6 +37,7 @@ Peatio::Application.routes.draw do
     resources :funds, only: [:index] do
       collection do
         post :gen_address
+        post :new_google_qrcode
       end
     end
 
@@ -44,7 +45,9 @@ Peatio::Application.routes.draw do
       collection { post 'gen_address' }
     end
 
-    resources 'withdraws/:currency', controller: 'withdraws', as: 'withdraw', only: %i[ create destroy ]
+    resources 'withdraws/:currency', controller: 'withdraws', as: 'withdraw', only: %i[ create destroy ] do
+      collection { post 'new_google_qrcode' }
+    end
 
     resources :exchange_assets, controller: 'assets'
 

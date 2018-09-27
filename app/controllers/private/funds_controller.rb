@@ -7,7 +7,6 @@ module Private
 
     layout 'funds'
 
-    before_action :authenticate_level
     before_action :trading_must_be_permitted!
 
     def index
@@ -26,11 +25,9 @@ module Private
       render nothing: true
     end
 
-    def authenticate_level
-      unless current_user.level > 1
-        flash[:alert] = "Need passed google verification !"
-        redirect_to new_member_mfa_session_path
-      end
+    def new_google_qrcode
+
     end
+
   end
 end
