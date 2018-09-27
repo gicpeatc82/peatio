@@ -8,6 +8,7 @@ module Private
     layout 'funds'
 
     before_action :trading_must_be_permitted!
+    before_action :level_verification
 
     def index
       @currencies        = Currency.enabled.sort
@@ -27,6 +28,15 @@ module Private
 
     def new_google_qrcode
 
+    end
+
+    private
+
+    def level_verification
+      unless current_user.level > 1
+        flash[:alert] = "Please pass google verification"
+        redirect_to new_member_mfa_session_path
+      end
     end
 
   end

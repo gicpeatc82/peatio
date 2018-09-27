@@ -9,7 +9,7 @@ class MemberMfaSessionsController < ApplicationController
     if @member.google_authentic?(params[:auth][:mfa_code])
       MemberMfaSession.create(@member)
       @member.update(level: 2)
-      redirect_to :back
+      redirect_to funds_path
     else
       flash[:error] = "Wrong code"
       redirect_to :back
